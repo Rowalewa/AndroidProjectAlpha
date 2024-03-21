@@ -208,12 +208,12 @@ fun TextComponent(value: String,
 fun TextFieldComponent(mylabel: String){
     var text by remember {
         mutableStateOf(value = "")
-    }
+    } // enabling text input
     TextField(modifier = Modifier.fillMaxWidth(),
        value = text, onValueChange = {
     newText -> text = newText // does the observation of the input field
     },
-        label = { TextFieldLabels(value = mylabel)})
+        label = { TextFieldLabels(value = mylabel)})  // label
 }
 @Composable
 fun TextFieldLabels(value: String){
