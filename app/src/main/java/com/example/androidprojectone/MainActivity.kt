@@ -12,9 +12,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -87,6 +90,18 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(10.dp))
                         TextFieldComponent("Enter your Age")
                         Spacer(modifier = Modifier.height(30.dp))
+                        CheckboxComponent(value = "I confirm to have read and agreed to the privacy policy and rules and regulations")
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Button(onClick = { /*TODO*/ },
+                            modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = "Register",
+                                fontSize = 40.sp,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.height(40.dp))
 
 //                        Row {
 //                            TextComponent(
@@ -156,6 +171,18 @@ fun HelloClientPreview(){
         Spacer(modifier = Modifier.height(10.dp))
         TextFieldComponent("Enter your Age")
         Spacer(modifier = Modifier.height(30.dp))
+        CheckboxComponent(value = "I confirm to have read and agreed to the privacy policy and rules and regulations")
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onClick = { /*TODO*/ },
+            modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = "Register",
+                fontSize = 40.sp,
+                modifier = Modifier.padding(10.dp)
+            )
+            
+        }
+        Spacer(modifier = Modifier.height(40.dp))
 //        Row {
 //            TextComponent(value = "Happy Sabbath: ",
 //                15.sp,
@@ -218,5 +245,27 @@ fun TextFieldComponent(mylabel: String){
 @Composable
 fun TextFieldLabels(value: String){
     Text(text = value)
+}
+@Composable
+fun CheckboxComponent(value: String){
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Color.Yellow)
+            .heightIn(56.dp)
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+
+    ){
+        val checkedState = remember {
+            mutableStateOf(value = false)
+        }
+        Checkbox(checked = checkedState.value, onCheckedChange = {
+            
+        })
+        TextFieldLabels(value = value)
+
+    }
+
 }
 
