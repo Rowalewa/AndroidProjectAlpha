@@ -1,5 +1,6 @@
 package com.example.androidprojectone
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
@@ -17,6 +18,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -57,6 +60,7 @@ class MainActivity : ComponentActivity() {
 //                        HelloClient("Samuel")
 //                        SecondLine()
 //                        ThirdLine()
+                        ImageContent()
                         TextComponent(
                             value = "Hey there, \uD83D\uDC4B",
                             20.sp,
@@ -89,11 +93,12 @@ class MainActivity : ComponentActivity() {
                         TextFieldComponent("Enter your Gender")
                         Spacer(modifier = Modifier.height(10.dp))
                         TextFieldComponent("Enter your Age")
-                        Spacer(modifier = Modifier.height(30.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
                         CheckboxComponent(value = "I confirm to have read and agreed to the privacy policy and rules and regulations")
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
                         Button(onClick = { /*TODO*/ },
-                            modifier = Modifier.fillMaxWidth()) {
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Red)) {
                             Text(
                                 text = "Register",
                                 fontSize = 40.sp,
@@ -101,7 +106,21 @@ class MainActivity : ComponentActivity() {
                             )
 
                         }
-                        Spacer(modifier = Modifier.height(40.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity,LogInActivity::class.java)
+                                startActivity(intent)
+                                         },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Green)) {
+                            Text(
+                                text = "Log In",
+                                fontSize = 40.sp,
+                                color = Color.Blue,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
 
 //                        Row {
 //                            TextComponent(
@@ -161,7 +180,9 @@ fun HelloClientPreview(){
             Color.Green,
             FontFamily.Default,
             FontWeight.Light,
-            TextAlign.Center)
+            TextAlign.Center
+        )
+        ImageContent()
         Spacer(modifier = Modifier.height(20.dp))
         TextFieldComponent("Enter your name")
         Spacer(modifier = Modifier.height(10.dp))
@@ -182,7 +203,18 @@ fun HelloClientPreview(){
             )
             
         }
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onClick = { /*TODO*/ },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Log In",
+                fontSize = 40.sp,
+                color = Color.Blue,
+                modifier = Modifier.padding(10.dp)
+            )
+
+        }
 //        Row {
 //            TextComponent(value = "Happy Sabbath: ",
 //                15.sp,
