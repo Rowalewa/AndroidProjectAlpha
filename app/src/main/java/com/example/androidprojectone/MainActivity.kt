@@ -101,22 +101,37 @@ class MainActivity : ComponentActivity() {
                             colors = ButtonDefaults.buttonColors(Color.Red)) {
                             Text(
                                 text = "Register",
-                                fontSize = 40.sp,
+                                fontSize = 10.sp,
                                 modifier = Modifier.padding(10.dp)
                             )
 
                         }
                         Spacer(modifier = Modifier.height(10.dp))
                         Button(onClick = {
-                            val intent = Intent(this@MainActivity,LogInActivity::class.java)
+                                val intent = Intent(this@MainActivity,LogInActivity::class.java)
                                 startActivity(intent)
                                          },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(Color.Green)) {
                             Text(
                                 text = "Log In",
-                                fontSize = 40.sp,
+                                fontSize = 10.sp,
                                 color = Color.Blue,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, ScrollActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
+                            Text(
+                                text = "Background Image",
+                                fontSize = 10.sp,
+                                color = Color.Yellow,
                                 modifier = Modifier.padding(10.dp)
                             )
 
@@ -153,7 +168,9 @@ fun HelloClient(name: String){
 
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true,
+    showSystemUi = true,
+    name = "My Preview")
 @Composable
 fun HelloClientPreview(){
     Column(modifier = Modifier
@@ -168,7 +185,8 @@ fun HelloClientPreview(){
             Color.Black,
             FontFamily.Monospace,
             FontWeight.Light,
-            TextAlign.Center)
+            TextAlign.Center
+        )
 //        TextComponent(value = "Let's Begin",
 //            15.sp,
 //            Color.Red,
@@ -261,7 +279,8 @@ fun TextComponent(value: String,
         color=color,
         fontFamily=fontFamily,
         fontWeight=fontWeight,
-        textAlign=textAlign)
+        textAlign=textAlign
+    )
 }
 @Composable
 fun TextFieldComponent(mylabel: String){
