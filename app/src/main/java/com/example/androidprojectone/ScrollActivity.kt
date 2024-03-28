@@ -92,6 +92,20 @@ class ScrollActivity : ComponentActivity() {
                             )
 
                         }
+                        Button(onClick = {
+                            val intent = Intent(this@ScrollActivity, CardActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
+                            Text(
+                                text = "Check",
+                                fontSize = 30.sp,
+                                color = Color.Yellow,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
                     }
                 }
             }
