@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -130,6 +131,20 @@ class MainActivity : ComponentActivity() {
                             colors = ButtonDefaults.buttonColors(Color.Blue)) {
                             Text(
                                 text = "Background Image",
+                                fontSize = 10.sp,
+                                color = Color.Yellow,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, TopBarActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
+                            Text(
+                                text = "Top Bar App",
                                 fontSize = 10.sp,
                                 color = Color.Yellow,
                                 modifier = Modifier.padding(10.dp)

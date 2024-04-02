@@ -106,6 +106,19 @@ class LogInActivity : ComponentActivity() {
                             )
 
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Button(onClick = {
+                            val intent = Intent(this@LogInActivity, WhatsAppActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = "WhatsApp",
+                                fontSize = 40.sp,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
                         ImageComponent()
 //        Row {
 //            TextComponent(value = "Happy Sabbath: ",
