@@ -54,10 +54,10 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier
                     .background(color = Color.Green)
-                    .fillMaxSize(), color = Color.Black) {
+                    .fillMaxSize(), color = Color.Red) {
                     Column(modifier = Modifier
                         .clip(shape = RoundedCornerShape(2.dp))
-                        .border(width = 2.dp, color = Color.White)) {
+                        .border(width = 5.dp, color = Color.Black)) {
 //                        HelloClient("Samuel")
 //                        SecondLine()
 //                        ThirdLine()
@@ -97,60 +97,158 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(10.dp))
                         CheckboxComponent(value = "I confirm to have read and agreed to the privacy policy and rules and regulations")
                         Spacer(modifier = Modifier.height(10.dp))
-                        Button(onClick = { /*TODO*/ },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(Color.Red)) {
-                            Text(
-                                text = "Register",
-                                fontSize = 10.sp,
-                                modifier = Modifier.padding(10.dp)
-                            )
+                        Row {
+                            Button(onClick = { /*TODO*/ },
+                                modifier = Modifier.padding(
+                                    start = 10.dp,
+                                    top = 2.dp,
+                                    end = 10.dp,
+                                    bottom = 2.dp
+                                ),
+                                colors = ButtonDefaults.buttonColors(Color.White)) {
+                                Text(
+                                    text = "Register",
+                                    fontSize = 10.sp,
+                                    modifier = Modifier.padding(10.dp)
+                                )
 
-                        }
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Button(onClick = {
+                            }
+                            Button(onClick = {
                                 val intent = Intent(this@MainActivity,LogInActivity::class.java)
                                 startActivity(intent)
-                                         },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(Color.Green)) {
-                            Text(
-                                text = "Log In",
-                                fontSize = 10.sp,
-                                color = Color.Blue,
-                                modifier = Modifier.padding(10.dp)
-                            )
+                            },
+                                modifier = Modifier.padding(
+                                    start = 0.dp,
+                                    top = 2.dp,
+                                    end = 10.dp,
+                                    bottom = 2.dp
+                                ),
+                                colors = ButtonDefaults.buttonColors(Color.Green)) {
+                                Text(
+                                    text = "Log In",
+                                    fontSize = 10.sp,
+                                    color = Color.Blue,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+
+                            }
+                            Button(onClick = {
+                                val intent = Intent(this@MainActivity, ScrollActivity::class.java)
+                                startActivity(intent)
+                            },
+                                modifier = Modifier,
+                                colors = ButtonDefaults.buttonColors(Color.Blue)) {
+                                Text(
+                                    text = "Background Image",
+                                    fontSize = 10.sp,
+                                    color = Color.Yellow,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Button(onClick = {
+                                val intent = Intent(this@MainActivity, TopBarActivity::class.java)
+                                startActivity(intent)
+                            },
+                                modifier = Modifier.padding(
+                                    start = 10.dp,
+                                    top = 2.dp,
+                                    end = 10.dp,
+                                    bottom = 2.dp
+                                ),
+                                colors = ButtonDefaults.buttonColors(Color.Magenta)) {
+                                Text(
+                                    text = "Top Bar App",
+                                    fontSize = 10.sp,
+                                    color = Color.Yellow,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+
+                            }
+                            Button(onClick = {
+                                val intent = Intent(this@MainActivity, IndicatorsActivity::class.java)
+                                startActivity(intent)
+                            },
+                                modifier = Modifier.padding(
+                                    start = 0.dp,
+                                    top = 2.dp,
+                                    end = 10.dp,
+                                    bottom = 2.dp
+                                ),
+                                colors = ButtonDefaults.buttonColors(Color.White)) {
+                                Text(
+                                    text = "Indicator",
+                                    fontSize = 12.sp,
+                                    color = Color.Black,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+
+                            }
+                            Button(onClick = {
+                                val intent = Intent(this@MainActivity, CardActivity::class.java)
+                                startActivity(intent)
+                            },
+                                modifier = Modifier,
+                                colors = ButtonDefaults.buttonColors(Color.Cyan)) {
+                                Text(
+                                    text = "Card",
+                                    fontSize = 10.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+
+                            }
 
                         }
                         Spacer(modifier = Modifier.height(10.dp))
-                        Button(onClick = {
-                            val intent = Intent(this@MainActivity, ScrollActivity::class.java)
-                            startActivity(intent)
-                        },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
-                            Text(
-                                text = "Background Image",
-                                fontSize = 10.sp,
-                                color = Color.Yellow,
-                                modifier = Modifier.padding(10.dp)
-                            )
+                        Row {
+                            Button(
+                                onClick = {
+                                    val intent = Intent(
+                                        this@MainActivity,
+                                        IndicatorCircularActivity::class.java
+                                    )
+                                    startActivity(intent)
+                                },
+                                modifier = Modifier,
+                                colors = ButtonDefaults.buttonColors(Color.DarkGray)
+                            ) {
+                                Text(
+                                    text = "Circular Indicator",
+                                    fontSize = 10.sp,
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    modifier = Modifier.padding(10.dp)
+                                )
 
-                        }
-                        Button(onClick = {
-                            val intent = Intent(this@MainActivity, TopBarActivity::class.java)
-                            startActivity(intent)
-                        },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
-                            Text(
-                                text = "Top Bar App",
-                                fontSize = 10.sp,
-                                color = Color.Yellow,
-                                modifier = Modifier.padding(10.dp)
-                            )
+                            }
+                            Button(
+                                onClick = {
+                                    val intent = Intent(
+                                        this@MainActivity,
+                                        BottomAppBarActivity::class.java
+                                    )
+                                    startActivity(intent)
+                                },
+                                modifier = Modifier,
+                                colors = ButtonDefaults.buttonColors(Color.DarkGray)
+                            ) {
+                                Text(
+                                    text = "Bottom App Bar",
+                                    fontSize = 10.sp,
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    modifier = Modifier.padding(10.dp)
+                                )
 
+                            }
                         }
+
 
 //                        Row {
 //                            TextComponent(

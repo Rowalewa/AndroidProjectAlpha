@@ -8,4 +8,7 @@
     <string name="title_activity_row_card">RowCardActivity</string>
     <string name="title_activity_top_bar">TopBarActivity</string>
     <string name="title_activity_whats_app">WhatsAppActivity</string>
+    <string name="title_activity_indicators">IndicatorsActivity</string>
+    <string name="title_activity_indicator_circular">IndicatorCircularActivity</string>
+    <string name="title_activity_bottom_app_bar">BottomAppBarActivity</string>
 </resources>

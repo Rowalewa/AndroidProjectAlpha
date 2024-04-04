@@ -108,12 +108,12 @@ class LogInActivity : ComponentActivity() {
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         Button(onClick = {
-                            val intent = Intent(this@LogInActivity, WhatsAppActivity::class.java)
+                            val intent = Intent(this@LogInActivity, IndicatorsActivity::class.java)
                             startActivity(intent)
                         },
                             modifier = Modifier.fillMaxWidth()) {
                             Text(
-                                text = "WhatsApp",
+                                text = "Indicator",
                                 fontSize = 40.sp,
                                 modifier = Modifier.padding(10.dp)
                             )

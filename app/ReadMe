@@ -1,0 +1,6 @@
+Progress indicators - show what is the progress of an activity and how long for it to finish(IndicatorsActivity)
+    >>linear indicators - A horizontal bar that fills from left to right
+    >>circular indicators - A circle whose stroke grows in length until it encompasses the full circumference of the circle
+
+    >>determinate indicators -  Displays exactly how much progress has been made.
+    >>non-determinate indicators - Animates continually without regard to progress.

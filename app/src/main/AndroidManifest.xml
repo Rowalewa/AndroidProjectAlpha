@@ -13,6 +13,21 @@
         android:theme="@style/Theme.AndroidProjectOne"
         tools:targetApi="31">
         <activity
+            android:name=".BottomAppBarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_bottom_app_bar"
+            android:theme="@style/Theme.AndroidProjectOne" />
+        <activity
+            android:name=".IndicatorCircularActivity"
+            android:exported="false"
+            android:label="@string/title_activity_indicator_circular"
+            android:theme="@style/Theme.AndroidProjectOne" />
+        <activity
+            android:name=".IndicatorsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_indicators"
+            android:theme="@style/Theme.AndroidProjectOne" />
+        <activity
             android:name=".WhatsAppActivity"
             android:exported="false"
             android:label="@string/title_activity_whats_app"
