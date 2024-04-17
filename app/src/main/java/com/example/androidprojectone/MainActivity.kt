@@ -1,7 +1,9 @@
 package com.example.androidprojectone
 
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,12 +17,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,6 +46,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -57,10 +69,13 @@ class MainActivity : ComponentActivity() {
                     .fillMaxSize(), color = Color.Red) {
                     Column(modifier = Modifier
                         .clip(shape = RoundedCornerShape(2.dp))
-                        .border(width = 5.dp, color = Color.Black)) {
+                        .border(width = 5.dp, color = Color.Black)
+                        .verticalScroll(rememberScrollState())
+                    ) {
 //                        HelloClient("Samuel")
 //                        SecondLine()
 //                        ThirdLine()
+                        val mContext= LocalContext.current
                         ImageContent()
                         TextComponent(
                             value = "Hey there, \uD83D\uDC4B",
@@ -97,157 +112,199 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(10.dp))
                         CheckboxComponent(value = "I confirm to have read and agreed to the privacy policy and rules and regulations")
                         Spacer(modifier = Modifier.height(10.dp))
-                        Row {
-                            Button(onClick = { /*TODO*/ },
-                                modifier = Modifier.padding(
-                                    start = 10.dp,
-                                    top = 2.dp,
-                                    end = 10.dp,
-                                    bottom = 2.dp
-                                ),
-                                colors = ButtonDefaults.buttonColors(Color.White)) {
-                                Text(
-                                    text = "Register",
-                                    fontSize = 10.sp,
-                                    modifier = Modifier.padding(10.dp)
-                                )
+                        Button(onClick = { /*TODO*/ },
+                            modifier = Modifier.padding(
+                                start = 20.dp,
+                                top = 2.dp,
+                                end = 20.dp,
+                                bottom = 2.dp
+                            )
+                                .fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.White)) {
+                            Text(
+                                text = "Register",
+                                fontSize = 10.sp,
+                                modifier = Modifier.padding(10.dp)
+                            )
 
-                            }
-                            Button(onClick = {
-                                val intent = Intent(this@MainActivity,LogInActivity::class.java)
-                                startActivity(intent)
-                            },
-                                modifier = Modifier.padding(
-                                    start = 0.dp,
-                                    top = 2.dp,
-                                    end = 10.dp,
-                                    bottom = 2.dp
-                                ),
-                                colors = ButtonDefaults.buttonColors(Color.Green)) {
-                                Text(
-                                    text = "Log In",
-                                    fontSize = 10.sp,
-                                    color = Color.Blue,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
-                            Button(onClick = {
-                                val intent = Intent(this@MainActivity, ScrollActivity::class.java)
-                                startActivity(intent)
-                            },
-                                modifier = Modifier,
-                                colors = ButtonDefaults.buttonColors(Color.Blue)) {
-                                Text(
-                                    text = "Background Image",
-                                    fontSize = 10.sp,
-                                    color = Color.Yellow,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
                         }
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity,LogInActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.padding(
+                                start = 20.dp,
+                                top = 2.dp,
+                                end = 20.dp,
+                                bottom = 2.dp
+                            )
+                                .fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Green)) {
+                            Text(
+                                text = "Log In",
+                                fontSize = 10.sp,
+                                color = Color.Blue,
+                                modifier = Modifier.padding(10.dp)
+                            )
 
+                        }
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, ScrollActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(
+                                    start = 20.dp,
+                                    top = 2.dp,
+                                    end = 20.dp,
+                                    bottom = 2.dp
+                                ),
+                            colors = ButtonDefaults.buttonColors(Color.Blue)) {
+                            Text(
+                                text = "Background Image",
+                                fontSize = 10.sp,
+                                color = Color.Yellow,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
                         Spacer(modifier = Modifier.height(5.dp))
-                        Row {
-                            Button(onClick = {
-                                val intent = Intent(this@MainActivity, TopBarActivity::class.java)
-                                startActivity(intent)
-                            },
-                                modifier = Modifier.padding(
-                                    start = 10.dp,
-                                    top = 2.dp,
-                                    end = 10.dp,
-                                    bottom = 2.dp
-                                ),
-                                colors = ButtonDefaults.buttonColors(Color.Magenta)) {
-                                Text(
-                                    text = "Top Bar App",
-                                    fontSize = 10.sp,
-                                    color = Color.Yellow,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
-                            Button(onClick = {
-                                val intent = Intent(this@MainActivity, IndicatorsActivity::class.java)
-                                startActivity(intent)
-                            },
-                                modifier = Modifier.padding(
-                                    start = 0.dp,
-                                    top = 2.dp,
-                                    end = 10.dp,
-                                    bottom = 2.dp
-                                ),
-                                colors = ButtonDefaults.buttonColors(Color.White)) {
-                                Text(
-                                    text = "Indicator",
-                                    fontSize = 12.sp,
-                                    color = Color.Black,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
-                            Button(onClick = {
-                                val intent = Intent(this@MainActivity, CardActivity::class.java)
-                                startActivity(intent)
-                            },
-                                modifier = Modifier,
-                                colors = ButtonDefaults.buttonColors(Color.Cyan)) {
-                                Text(
-                                    text = "Card",
-                                    fontSize = 10.sp,
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, TopBarActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.padding(
+                                start = 20.dp,
+                                top = 2.dp,
+                                end = 20.dp,
+                                bottom = 2.dp
+                            )
+                                .fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.Magenta)) {
+                            Text(
+                                text = "Top Bar App",
+                                fontSize = 10.sp,
+                                color = Color.Yellow,
+                                modifier = Modifier.padding(10.dp)
+                            )
 
                         }
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Row {
-                            Button(
-                                onClick = {
-                                    val intent = Intent(
-                                        this@MainActivity,
-                                        IndicatorCircularActivity::class.java
-                                    )
-                                    startActivity(intent)
-                                },
-                                modifier = Modifier,
-                                colors = ButtonDefaults.buttonColors(Color.DarkGray)
-                            ) {
-                                Text(
-                                    text = "Circular Indicator",
-                                    fontSize = 10.sp,
-                                    color = Color.Red,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    modifier = Modifier.padding(10.dp)
-                                )
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, IndicatorsActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.padding(
+                                start = 20.dp,
+                                top = 2.dp,
+                                end = 20.dp,
+                                bottom = 2.dp
+                            )
+                                .fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(Color.White)) {
+                            Text(
+                                text = "Indicator",
+                                fontSize = 12.sp,
+                                color = Color.Black,
+                                modifier = Modifier.padding(10.dp)
+                            )
 
-                            }
-                            Button(
-                                onClick = {
-                                    val intent = Intent(
-                                        this@MainActivity,
-                                        BottomAppBarActivity::class.java
-                                    )
-                                    startActivity(intent)
-                                },
-                                modifier = Modifier,
-                                colors = ButtonDefaults.buttonColors(Color.DarkGray)
-                            ) {
-                                Text(
-                                    text = "Bottom App Bar",
-                                    fontSize = 10.sp,
-                                    color = Color.Red,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-
-                            }
                         }
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, CardActivity::class.java)
+                            startActivity(intent)
+                        },
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(
+                                    start = 20.dp,
+                                    top = 2.dp,
+                                    end = 20.dp,
+                                    bottom = 2.dp
+                                ),
+                            colors = ButtonDefaults.buttonColors(Color.Cyan)) {
+                            Text(
+                                text = "Card",
+                                fontSize = 10.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.ExtraBold,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Button(
+                            onClick = {
+                                val intent = Intent(
+                                    this@MainActivity,
+                                    IndicatorCircularActivity::class.java
+                                )
+                                startActivity(intent)
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(
+                                    start = 20.dp,
+                                    top = 2.dp,
+                                    end = 20.dp,
+                                    bottom = 2.dp
+                                ),
+                            colors = ButtonDefaults.buttonColors(Color.DarkGray)
+                        ) {
+                            Text(
+                                text = "Circle Indicator",
+                                fontSize = 10.sp,
+                                color = Color.Red,
+                                fontWeight = FontWeight.ExtraBold,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = {
+                                val intent = Intent(
+                                    this@MainActivity,
+                                    BottomAppBarActivity::class.java
+                                )
+                                startActivity(intent)
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(
+                                    start = 20.dp,
+                                    top = 2.dp,
+                                    end = 20.dp,
+                                    bottom = 2.dp
+                                ),
+                            colors = ButtonDefaults.buttonColors(Color.DarkGray)
+                        ) {
+                            Text(
+                                text = "Bottom Bar",
+                                fontSize = 10.sp,
+                                color = Color.Red,
+                                fontWeight = FontWeight.ExtraBold,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        IconButton(onClick = {
+                            val cameraIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            if (cameraIntent.resolveActivity(mContext.packageManager)!=null){
+                                mContext.startActivity(cameraIntent)
+                            }else{
+                                println("Camera app is not available")
+                            }
+                        },
+                            modifier = Modifier.fillMaxWidth()
+//                                    .size(width = 380.dp, height = 70.dp)
+//                                    .fillMaxWidth()
+//                                    .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+                                    ,
+                        ) {
+                            Icon(imageVector = Icons.Filled.Face,
+                                contentDescription = null
+                            )
+
+                        }
+
+                        Spacer(modifier = Modifier.width(10.dp))
 
 
 //                        Row {

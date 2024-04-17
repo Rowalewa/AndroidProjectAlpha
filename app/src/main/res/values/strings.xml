@@ -11,4 +11,6 @@
     <string name="title_activity_indicators">IndicatorsActivity</string>
     <string name="title_activity_indicator_circular">IndicatorCircularActivity</string>
     <string name="title_activity_bottom_app_bar">BottomAppBarActivity</string>
+    <string name="title_activity_friday_wanderly_evaluation">FridayWanderlyEvaluationActivity
+    </string>
 </resources>
